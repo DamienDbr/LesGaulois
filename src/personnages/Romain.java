@@ -10,6 +10,10 @@ public class Romain {
 	public String getNom() {
 		return nom;
 	}
+	public int getForce() {
+		return force;
+	}
+	
 	public void parler(String texte) {
 		System.out.println(prendreParole() + "« " + texte + "»");
 	}
@@ -23,5 +27,12 @@ public class Romain {
 		} else {
 			parler("J'abandonne...");
 		}
+	}
+	public static void main(String[] args) {
+		Romain brutus = new Romain("Brutus",4);
+		System.out.println(brutus.prendreParole());
+		System.out.println("C'est moi !");
+		brutus.parler("Adieu César...");
+		brutus.recevoirCoup(5);
 	}
 }
