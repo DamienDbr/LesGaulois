@@ -22,7 +22,7 @@ public class Gaulois {
 	public void frapper(Romain romain, Gaulois gaulois, Druide druide) {
 		System.out.println(nom + " envoie un grand coup dans la m�choire de "
 				+ romain.getNom());
-		gaulois.boirePotion(gaulois, druide);;
+		gaulois.boirePotion(gaulois, druide);
 		force = force*effetPotion;
 		/*System.out.println(force); */
 		romain.recevoirCoup(force / 3);
