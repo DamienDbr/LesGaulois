@@ -4,23 +4,27 @@ public class Gaulois {
 	private String nom;
 	private int force;
 	private int effetPotion = 1;
-	public Gaulois(String nom, int force) {
+	public Gaulois(String nom, int force, int effetPotion) {
 		this.nom = nom;
 		this.force = force;
+		this.effetPotion = effetPotion;
 	}
 	public String getNom() {
 		return nom;
 		
 	}
 	public void parler(String texte) {
-		System.out.println(prendreParole() + "« " + texte + "»");
+		System.out.println(prendreParole() + "ï¿½ " + texte + "ï¿½");
 	}
 	private String prendreParole() {
 		return "Le gaulois " + nom + " : ";
 	}
-	public void frapper(Romain romain) {
-		System.out.println(nom + " envoie un grand coup dans la mâchoire de "
+	public void frapper(Romain romain, Gaulois gaulois, Druide druide) {
+		System.out.println(nom + " envoie un grand coup dans la mï¿½choire de "
 				+ romain.getNom());
+		gaulois.boirePotion(gaulois, druide);;
+		force = force*effetPotion;
+		/*System.out.println(force); */
 		romain.recevoirCoup(force / 3);
 	}
 	@Override
@@ -29,19 +33,29 @@ public class Gaulois {
 		return "Gaulois [nom=" + nom + ", force=" + force
 				+ ", effetPotion=" + effetPotion + "]";
 	}
+	
+	
+	public void boirePotion(Gaulois gaulois, Druide druide) {
+		effetPotion = druide.preparerPotion();
+		gaulois.parler(" Merci Druide, je sens que ma force est "+ effetPotion+" fois dÃ©cuplÃ©e.");
+	}
 	public static void main(String[] args) {
-		Gaulois asterix = new Gaulois("Astérix",8);
-		Gaulois obelix = new Gaulois("Obelix",99);
+		Gaulois asterix = new Gaulois("Asterix",8,1);
+		Gaulois obelix = new Gaulois("Obelix",99,1);
 		System.out.println(asterix);
 		System.out.println(obelix);
 		System.out.println(asterix.force);
 		System.out.println(asterix.nom);
 		System.out.println(asterix.prendreParole());
 		asterix.parler("Par Toutatis !");
-		obelix.parler("Mais où sont les sangliers ?");
+		obelix.parler("Mais ou sont les sangliers ?");
 		Romain cesar = new Romain("Cesar",2);
 		cesar.parler("Brutus, mon fils !");
-		asterix.frapper(cesar);
+		Druide panoramix = new Druide("Panoramix",1,10,1); 
+		asterix.boirePotion(asterix,panoramix);
+		System.out.println(" ");
+		asterix.frapper(cesar,asterix,panoramix);
+		
 
 	}
 }
