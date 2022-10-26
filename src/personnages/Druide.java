@@ -4,12 +4,11 @@ import java.util.Random;
 
 public class Druide {
 	private String nom;
-	private int effetPotionMin;
+	private int effetPotionMin=0;
 	private int effetPotionMax;
 	private int forcePotion = 1;
-	public Druide(String nom, int effetPotionMin, int effetPotionMax, int forcePotion) {
+	public Druide(String nom, int effetPotionMax, int forcePotion) {
 		this.nom = nom;
-		this.effetPotionMin = effetPotionMin;
 		this.effetPotionMax = effetPotionMax;
 		this.forcePotion = forcePotion;
 		parler("Bonjour, je suis le druide " + nom + " et ma potion peut aller d'une force"
@@ -48,13 +47,13 @@ public class Druide {
 			System.out.println("Non, Obélix !... Tu n’auras pas de potion magique !");
 		}
 		else {
-			gaulois.boirePotion(gaulois, druide);
+			gaulois.boirePotion(gaulois,druide);
 		}
 	}
 	public static void main(String[] args) {
-		Druide panoramix = new Druide("Panoramix",2,10,1);
-		Gaulois asterix = new Gaulois("Asterix",8,1);
-		Gaulois obelix = new Gaulois("Obelix",99,1);
+		Druide panoramix = new Druide("Panoramix",10,1);
+		Gaulois asterix = new Gaulois("Asterix",8);
+		Gaulois obelix = new Gaulois("Obelix",99);
 		panoramix.booster(asterix, panoramix);
 		System.out.println();
 		panoramix.booster(obelix, panoramix);

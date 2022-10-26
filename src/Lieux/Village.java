@@ -1,4 +1,7 @@
-package personnages;
+package Lieux;
+
+import personnages.Chef;
+import personnages.Gaulois;
 
 public class Village {
 	private String nom;
@@ -40,8 +43,8 @@ public class Village {
 		}
 	}
 	public static void main(String[] args) {
-		Gaulois asterix = new Gaulois("Asterix",8,1);
-		Gaulois obelix = new Gaulois("Obelix",25,1);
+		Gaulois asterix = new Gaulois("Asterix",8);
+		Gaulois obelix = new Gaulois("Obelix",25);
 		Village village = new Village("Village des Irréductibles");
 		System.out.println(village.nbVillageoisMaximum);
 		village.ajouterHabitant(asterix);
